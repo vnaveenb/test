@@ -1,0 +1,185 @@
+<mvc:View
+    controllerName="sap.ui.demo.timesheet.controller.Monthly"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+
+    <Page id="monthlyPage" showHeader="false" showFooter="false" class="sapUiNoContentPadding">
+        <content>
+            <HBox class="mainContainer" style="max-width: none !important; margin: 0; padding: 0 !important; height: calc(100vh - 3rem);">
+
+                <!-- Left Sidebar Navigation -->
+                <VBox class="fioriCard fiori-shadow sapUiHideOnPhone" style="width: 18rem; height: 100%; border-radius: 0 !important; border-top: none !important; border-bottom: none !important; border-left: none !important; padding: 1rem !important; overflow-y: auto;" justifyContent="SpaceBetween">
+                    <VBox>
+                        <Label text="NAVIGATION" design="Bold" class="sapThemeFont-asColor sapUiSmallMarginBottom" style="font-size: 10px;"/>
+
+                        <!-- Nav Items -->
+                        <HBox alignItems="Center" class="sapUiSmallMarginBottom cursorPointer" style="background-color: rgba(25, 120, 229, 0.1); padding: 0.75rem; border-radius: 0.5rem; color: #1978e5;" press="onNavToMonthly">
+                            <core:Icon src="sap-icon://calendar" class="sapUiSmallMarginEnd" />
+                            <Title text="Overview" class="sapMTitleStyleH6" />
+                        </HBox>
+
+                        <HBox alignItems="Center" class="sapUiSmallMarginBottom cursorPointer" style="padding: 0.75rem; border-radius: 0.5rem;" press="onNavToTimesheet">
+                            <core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd sapThemeFont-asColor" />
+                            <Title text="Weekly Entry" class="sapMTitleStyleH6 sapThemeFont-asColor" />
+                        </HBox>
+
+                        <HBox alignItems="Center" class="sapUiSmallMarginBottom cursorPointer" style="padding: 0.75rem; border-radius: 0.5rem;">
+                            <core:Icon src="sap-icon://bar-chart" class="sapUiSmallMarginEnd sapThemeFont-asColor" />
+                            <Title text="Statistics" class="sapMTitleStyleH6 sapThemeFont-asColor" />
+                        </HBox>
+
+                        <HBox alignItems="Center" class="sapUiSmallMarginBottom cursorPointer" style="padding: 0.75rem; border-radius: 0.5rem;">
+                            <core:Icon src="sap-icon://bell" class="sapUiSmallMarginEnd sapThemeFont-asColor" />
+                            <Title text="Approvals" class="sapMTitleStyleH6 sapThemeFont-asColor" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Monthly Stats -->
+                    <VBox style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
+                        <Label text="MONTHLY STATS" design="Bold" class="sapThemeFont-asColor sapUiSmallMarginBottom" style="font-size: 10px;"/>
+                        <VBox style="background-color: #f8fafc; border-radius: 0.75rem; padding: 1rem;">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
+                                <Text text="Total Hours" class="sapThemeFont-asColor" style="font-size: 12px;"/>
+                                <Title text="168h" class="sapMTitleStyleH6"/>
+                            </HBox>
+                            <HBox style="width: 100%; height: 0.375rem; background-color: #e2e8f0; border-radius: 9999px; overflow: hidden;" class="sapUiTinyMarginBottom">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%; width: 75%; background-color: #1978e5; border-radius: 9999px;"></div>
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                <Text text="Approved: 120h" style="font-size: 10px; color: #16a34a; font-weight: 600;" />
+                                <Text text="Pending: 48h" style="font-size: 10px; color: #ea580c; font-weight: 600;" />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Center Area: Calendar Overview -->
+                <VBox class="sapUiMediumMargin" style="flex: 1; overflow-y: auto;">
+                    <VBox style="max-width: 64rem; margin: 0 auto; width: 100%;">
+                        <!-- Header & Switcher -->
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiLargeMarginBottom" wrap="Wrap">
+                            <VBox>
+                                <Title text="Timesheet Summary" class="sapMTitleStyleH2" />
+                                <Text text="Manage and track your monthly work entries" class="sapThemeFont-asColor" />
+                            </VBox>
+                            <SegmentedButton selectedKey="month">
+                                <items>
+                                    <SegmentedButtonItem key="month" text="Month" />
+                                    <SegmentedButtonItem key="week" text="Week" press="onNavToTimesheet" />
+                                </items>
+                            </SegmentedButton>
+                        </HBox>
+
+                        <!-- Calendar Controls -->
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="fioriCard fiori-shadow sapUiMediumMarginBottom" style="padding: 1rem !important;">
+                            <HBox alignItems="Center">
+                                <Button icon="sap-icon://slim-arrow-left" type="Transparent" />
+                                <Title text="October 2023" class="sapMTitleStyleH4 sapUiMediumMarginBeginEnd" />
+                                <Button icon="sap-icon://slim-arrow-right" type="Transparent" />
+                            </HBox>
+                            <HBox alignItems="Center" class="sapUiHideOnPhone">
+                                <HBox alignItems="Center" class="sapUiMediumMarginEnd">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 0.625rem; width: 0.625rem; border-radius: 9999px; background-color: #22c55e; margin-right: 0.5rem;"></div>
+                                    <Text text="Approved" class="sapThemeFont-asColor" style="font-size: 12px; font-weight: 600;" />
+                                </HBox>
+                                <HBox alignItems="Center" class="sapUiMediumMarginEnd">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 0.625rem; width: 0.625rem; border-radius: 9999px; background-color: #ef4444; margin-right: 0.5rem;"></div>
+                                    <Text text="Rejected" class="sapThemeFont-asColor" style="font-size: 12px; font-weight: 600;" />
+                                </HBox>
+                                <HBox alignItems="Center">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 0.625rem; width: 0.625rem; border-radius: 9999px; background-color: #f97316; margin-right: 0.5rem;"></div>
+                                    <Text text="Missing" class="sapThemeFont-asColor" style="font-size: 12px; font-weight: 600;" />
+                                </HBox>
+                            </HBox>
+                        </HBox>
+
+                        <!-- Calendar Grid using sap.ui.layout.cssgrid -->
+                        <VBox class="fioriCard fiori-shadow sapUiMediumMarginBottom" style="padding: 0 !important; overflow: hidden;">
+                            <l:cssgrid.CSSGrid gridTemplateColumns="repeat(7, minmax(0, 1fr))" style="border-bottom: 1px solid #f1f5f9;">
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="SUN" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="MON" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="TUE" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="WED" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="THU" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem; border-right: 1px solid #f1f5f9;"><Text text="FRI" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                                <HBox alignItems="Center" justifyContent="Center" style="padding: 0.75rem;"><Text text="SAT" class="sapThemeFont-asColor" style="font-size: 10px; font-weight: bold; text-transform: uppercase;"/></HBox>
+                            </l:cssgrid.CSSGrid>
+
+                            <!-- Calendar Days -->
+                            <l:cssgrid.CSSGrid id="calendarGrid" items="{timesheet>/calendarDays}" gridTemplateColumns="repeat(7, minmax(0, 1fr))">
+                                <customLayout>
+                                    <l:cssgrid.GridBasicLayout />
+                                </customLayout>
+                                <VBox class="calendarDay {= ${timesheet>isToday} ? 'sapThemeBrand-asBackgroundColor' : ''}" style="{= ${timesheet>isToday} ? 'background-color: rgba(25, 120, 229, 0.05); box-shadow: inset 0 0 0 1px rgba(25, 120, 229, 0.5);' : ''}">
+                                    <HBox justifyContent="SpaceBetween" alignItems="Start" width="100%">
+                                        <Title text="{timesheet>day}" class="sapMTitleStyleH6 {= ${timesheet>isToday} ? 'sapThemeBrand-asColor' : ''}" style="{= ${timesheet>empty} ? 'opacity: 0.5;' : ''}" />
+                                        <Text text="Today" visible="{timesheet>isToday}" style="font-size: 10px; font-weight: bold; background-color: #1978e5; color: white; padding: 2px 6px; border-radius: 9999px;" />
+                                    </HBox>
+                                    <VBox visible="{= ${timesheet>state} !== 'none' }" class="sapUiTinyMarginTop" style="width: 100%; height: 100%;" justifyContent="End">
+                                        <!-- Note: Complex bindings simplified for mockup. Assuming the state styling is mapped manually or via formatter -->
+                                        <HBox alignItems="Center" style="background-color: {timesheet>bgColor}; padding: 0.25rem; border-radius: 0.25rem;">
+                                            <div xmlns="http://www.w3.org/1999/xhtml" style="height: 0.5rem; width: 0.5rem; border-radius: 9999px; background-color: {timesheet>dotColor}; margin-right: 0.25rem;"></div>
+                                            <Text text="{timesheet>label}" style="font-size: 10px; font-weight: bold; color: {timesheet>textColor};" />
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                            </l:cssgrid.CSSGrid>
+                        </VBox>
+
+                        <HBox alignItems="Center" class="sapUiMediumMarginBottom">
+                            <core:Icon src="sap-icon://message-information" size="14px" class="sapThemeFont-asColor sapUiTinyMarginEnd" />
+                            <Text text="Click on any day to see detailed entries or a full week to navigate to weekly view." class="sapThemeFont-asColor" style="font-size: 14px; font-style: italic;"/>
+                        </HBox>
+
+                    </VBox>
+                </VBox>
+
+                <!-- Right Sidebar Notifications -->
+                <VBox class="fioriCard fiori-shadow sapUiHideOnPhone" style="width: 20rem; height: 100%; border-radius: 0 !important; border-top: none !important; border-bottom: none !important; border-right: none !important; padding: 1rem !important; overflow-y: auto;">
+                    <VBox class="sapUiMediumMarginBottom">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom">
+                            <Label text="RECENT ACTIVITY" design="Bold" class="sapThemeFont-asColor" style="font-size: 10px;"/>
+                            <Link text="Clear all" style="font-size: 12px; font-weight: bold;" />
+                        </HBox>
+
+                        <!-- Notifications List -->
+                        <VBox style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 0.75rem; border-radius: 0.5rem; cursor: pointer;" class="sapUiSmallMarginBottom">
+                            <Title text="Entry Rejected" style="font-size: 12px; color: #dc2626;" class="sapUiTinyMarginBottom" />
+                            <Text text="Oct 4 submission was rejected by Project Lead." style="font-size: 14px; font-weight: 500;" class="sapUiTinyMarginBottom" />
+                            <Text text="2 hours ago" class="sapThemeFont-asColor" style="font-size: 10px;" />
+                        </VBox>
+
+                        <VBox style="background-color: #f8fafc; border-left: 4px solid #1978e5; padding: 0.75rem; border-radius: 0.5rem; cursor: pointer;" class="sapUiSmallMarginBottom">
+                            <Title text="System Reminder" style="font-size: 12px; color: #1978e5;" class="sapUiTinyMarginBottom" />
+                            <Text text="Please complete entries for Week 40." style="font-size: 14px; font-weight: 500;" class="sapUiTinyMarginBottom" />
+                            <Text text="Yesterday" class="sapThemeFont-asColor" style="font-size: 10px;" />
+                        </VBox>
+
+                        <VBox style="background-color: #f8fafc; border-left: 4px solid #22c55e; padding: 0.75rem; border-radius: 0.5rem; cursor: pointer;">
+                            <Title text="Approved" style="font-size: 12px; color: #16a34a;" class="sapUiTinyMarginBottom" />
+                            <Text text="Week 39 has been successfully released." style="font-size: 14px; font-weight: 500;" class="sapUiTinyMarginBottom" />
+                            <Text text="2 days ago" class="sapThemeFont-asColor" style="font-size: 10px;" />
+                        </VBox>
+                    </VBox>
+
+                    <VBox>
+                        <Label text="KEY HIGHLIGHTS" design="Bold" class="sapThemeFont-asColor sapUiSmallMarginBottom" style="font-size: 10px;"/>
+                        <HBox>
+                            <VBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginEnd" style="width: 50%; padding: 0.75rem; background-color: rgba(25, 120, 229, 0.05); border: 1px solid rgba(25, 120, 229, 0.1); border-radius: 0.5rem;">
+                                <Title text="22" class="sapThemeBrand-asColor" style="font-size: 1.25rem;" />
+                                <Text text="Days Logged" class="sapThemeFont-asColor sapUiTinyMarginTop" style="font-size: 10px;" />
+                            </VBox>
+                            <VBox alignItems="Center" justifyContent="Center" style="width: 50%; padding: 0.75rem; background-color: rgba(34, 197, 94, 0.05); border: 1px solid rgba(34, 197, 94, 0.1); border-radius: 0.5rem;">
+                                <Title text="88%" style="font-size: 1.25rem; color: #16a34a;" />
+                                <Text text="Approval Rate" class="sapThemeFont-asColor sapUiTinyMarginTop" style="font-size: 10px;" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>

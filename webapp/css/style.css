@@ -1,0 +1,156 @@
+/* Global Variables matching Tailwind Config */
+:root {
+    --primary: #1978e5;
+    --background-light: #f6f7f8;
+    --background-dark: #111821;
+    --fiori-shell: #ffffff;
+    --fiori-card: #ffffff;
+    --fiori-text: #1d2d3e;
+    --fiori-secondary: #6a6d70;
+    --fiori-border: #d9d9d9;
+}
+
+/* Base Body Styles overriding SAP UI5 defaults where necessary */
+body.sapUiBody {
+    font-family: 'Arimo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--background-light);
+    color: #0f172a; /* text-slate-900 */
+}
+
+/* Fiori Specific Classes */
+.fiori-shadow {
+    box-shadow: 0 0 0.125rem 0 rgba(0,0,0,0.1), 0 0.25rem 0.5rem 0 rgba(0,0,0,0.05);
+}
+
+.fiori-header-shadow {
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05);
+}
+
+/* Top Navigation Bar / Shell Header */
+.customAppHeader {
+    height: 3rem !important; /* h-12 */
+    background-color: var(--fiori-shell);
+    border-bottom: 1px solid rgba(25, 120, 229, 0.1) !important; /* border-primary/10 */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Typography Customizations */
+.sapMTitleStyleH2 {
+    font-size: 1.875rem !important; /* text-3xl */
+    font-weight: 700 !important;
+    color: #1e293b !important; /* text-slate-800 */
+}
+
+/* Main Content Area Formatting */
+.mainContainer {
+    max-width: 72rem; /* max-w-6xl */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Cards & Illustrated Message Background */
+.fioriCard {
+    background-color: var(--fiori-card);
+    border-radius: 0.75rem !important; /* rounded-xl */
+    border: 1px solid rgba(226, 232, 240, 0.5) !important; /* border-slate-200/50 */
+    padding: 1.5rem !important; /* p-6 */
+}
+
+/* Buttons */
+.btnPrimary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: white !important;
+    border-radius: 0.5rem !important; /* rounded-lg */
+    font-weight: 600 !important;
+    box-shadow: 0 10px 15px -3px rgba(25, 120, 229, 0.2) !important; /* shadow-lg shadow-primary/20 */
+    padding-left: 2rem !important; /* px-8 */
+    padding-right: 2rem !important; /* px-8 */
+}
+
+.btnPrimary:hover {
+    background-color: rgba(25, 120, 229, 0.9) !important; /* hover:bg-primary/90 */
+}
+
+.btnSecondary {
+    background-color: transparent !important;
+    border: 1px solid #cbd5e1 !important; /* border-slate-300 */
+    color: #334155 !important; /* text-slate-700 */
+    border-radius: 0.5rem !important;
+    font-weight: 600 !important;
+}
+
+.btnSecondary:hover {
+    background-color: #f8fafc !important; /* hover:bg-slate-50 */
+}
+
+/* Footer Action Bar */
+.customFooter {
+    background-color: var(--fiori-shell);
+    border-top: 1px solid #e2e8f0 !important; /* border-slate-200 */
+    padding: 1rem 1.5rem !important; /* px-6 py-4 */
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+}
+
+/* Timesheet Grid / Table Headers */
+.customTable th {
+    background-color: #f8fafc !important; /* bg-slate-50 */
+    border-bottom: 1px solid #e2e8f0 !important; /* border-slate-200 */
+    color: #475569 !important; /* text-slate-600 */
+    font-weight: 600 !important;
+    padding: 0.75rem !important; /* p-3 */
+}
+
+.customTable td {
+    padding: 0.5rem !important; /* p-2 */
+    border-bottom: 1px solid #e2e8f0 !important; /* border-slate-200 */
+}
+
+.customTable tr:hover {
+    background-color: #f8fafc !important; /* hover:bg-slate-50 */
+}
+
+/* Inputs in Grid */
+.gridInput {
+    border: 1px solid #e2e8f0 !important; /* border-slate-200 */
+    border-radius: 0.25rem !important; /* rounded */
+    text-align: center !important;
+}
+.gridInput.sapMInputBaseInner:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+
+/* Calendar Grid */
+.calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.calendarDay {
+    height: 6rem; /* h-24 */
+    padding: 0.5rem; /* p-2 */
+    border-right: 1px solid #f1f5f9; /* border-slate-100 */
+    border-bottom: 1px solid #f1f5f9;
+}
+@media (min-width: 768px) {
+    .calendarDay {
+        height: 8rem; /* md:h-32 */
+    }
+}
+.calendarDay:hover {
+    background-color: #f8fafc; /* hover:bg-slate-50 */
+    cursor: pointer;
+}

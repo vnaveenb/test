@@ -39,6 +39,13 @@
       "async": true,
       "id": "app"
     },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
     "dependencies": {
       "minUI5Version": "1.108.0",
       "libs": {
@@ -76,23 +83,32 @@
       "routes": [
         {
           "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "timesheet",
           "name": "timesheet",
           "target": "timesheet"
         },
         {
-          "pattern": "empty",
-          "name": "empty",
-          "target": "empty"
+          "pattern": "monthly",
+          "name": "monthly",
+          "target": "monthly"
         }
       ],
       "targets": {
+        "home": {
+          "viewId": "home",
+          "viewName": "Home"
+        },
         "timesheet": {
           "viewId": "timesheet",
           "viewName": "Timesheet"
         },
-        "empty": {
-          "viewId": "empty",
-          "viewName": "Empty"
+        "monthly": {
+          "viewId": "monthly",
+          "viewName": "Monthly"
         }
       }
     }
