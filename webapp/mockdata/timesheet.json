@@ -1,59 +1,123 @@
 {
     "employee": {
+      "firstName": "Alex",
       "name": "Alex Rivers",
       "id": "E00432",
       "status": "Draft",
       "weekTitle": "Oct 16 – Oct 22, 2023",
       "weekNumber": "Week 42, 2023",
       "standardHours": 40.00,
-      "recordedHours": 32.00
+      "recordedHours": 37.50,
+      "todayRecorded": "0.00",
+      "todayStandard": "8.00"
     },
     "timeEntries": [
       {
-        "activity": "Project Alpha - Development",
-        "wbs": "WBS: 12.040.11 / Software Eng",
+        "activity": "PRJ-2023-045 External Portal Design",
+        "wbs": "P-100045.1.1 UX Strategy",
+        "type": "Consulting",
         "mon": 8.00,
         "tue": 8.00,
-        "wed": 8.00,
-        "thu": 4.00,
-        "fri": 0.00,
-        "sat": 0.00,
-        "sun": 0.00,
-        "total": 28.00
+        "wed": 4.00,
+        "thu": 6.50,
+        "fri": 8.00,
+        "sat": null,
+        "sun": null,
+        "total": 34.50
       },
       {
-        "activity": "Internal - Team Meeting",
-        "wbs": "WBS: ADMIN.001 / Admin",
-        "mon": 0.00,
-        "tue": 0.00,
-        "wed": 0.00,
-        "thu": 4.00,
-        "fri": 0.00,
-        "sat": 0.00,
-        "sun": 0.00,
-        "total": 4.00
-      },
-      {
-        "activity": "Training - SAP Fiori",
-        "wbs": "WBS: EDU.999 / Education",
-        "mon": 0.00,
-        "tue": 0.00,
-        "wed": 0.00,
+        "activity": "Overhead: Internal Meetings",
+        "wbs": "ADM-001 General Admin",
+        "type": "Administration",
+        "mon": 1.00,
+        "tue": 0.50,
+        "wed": 1.50,
         "thu": 0.00,
         "fri": 0.00,
-        "sat": 0.00,
-        "sun": 0.00,
-        "total": 0.00
+        "sat": null,
+        "sun": null,
+        "total": 3.00
       }
     ],
     "dailyTotals": {
-      "mon": 8.00,
-      "tue": 8.00,
-      "wed": 8.00,
-      "thu": 8.00,
-      "fri": 0.00,
+      "mon": 9.00,
+      "tue": 8.50,
+      "wed": 5.50,
+      "thu": 6.50,
+      "fri": 8.00,
       "sat": 0.00,
       "sun": 0.00,
-      "total": 32.00
-    }
+      "total": 37.50
+    },
+    "recentActivities": [
+      {
+        "wbsName": "WBS-001: Backend Development",
+        "projectName": "Global Logistics Corp > Cloud Migration",
+        "timeAgo": "2h ago"
+      },
+      {
+        "wbsName": "WBS-042: UI Design System",
+        "projectName": "TechNova Inc > Mobile App Refresh",
+        "timeAgo": "Yesterday"
+      }
+    ],
+    "allActivities": [
+      {
+        "text": "Global Logistics Corp",
+        "icon": "sap-icon://factory",
+        "nodes": [
+          {
+            "text": "Cloud Migration Project",
+            "icon": "sap-icon://folder",
+            "nodes": [
+              { "text": "WBS-001: Infrastructure Setup (Est: 40h)", "icon": "sap-icon://document" },
+              { "text": "WBS-002: Security Audit (Est: 12h)", "icon": "sap-icon://document" }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "TechNova Inc",
+        "icon": "sap-icon://factory",
+        "nodes": []
+      },
+      {
+        "text": "Zephyr Retail Systems",
+        "icon": "sap-icon://factory",
+        "nodes": []
+      }
+    ],
+    "calendarDays": [
+      { "day": "1", "state": "none", "isToday": false },
+      { "day": "2", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "3", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "4", "state": "rejected", "label": "Rejected", "bgColor": "rgba(239, 68, 68, 0.2)", "dotColor": "#ef4444", "textColor": "#b91c1c", "isToday": false },
+      { "day": "5", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "6", "state": "missing", "label": "Missing", "bgColor": "rgba(249, 115, 22, 0.2)", "dotColor": "#f97316", "textColor": "#c2410c", "isToday": false },
+      { "day": "7", "state": "open", "label": "Open", "bgColor": "#ffffff", "dotColor": "#94a3b8", "textColor": "#475569", "isToday": true },
+      { "day": "8", "state": "none", "isToday": false },
+      { "day": "9", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "10", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "11", "state": "approved", "label": "8.0h", "bgColor": "rgba(34, 197, 94, 0.2)", "dotColor": "#22c55e", "textColor": "#15803d", "isToday": false },
+      { "day": "12", "state": "none", "empty": true, "isToday": false },
+      { "day": "13", "state": "none", "empty": true, "isToday": false },
+      { "day": "14", "state": "none", "empty": true, "isToday": false },
+      { "day": "15", "state": "none", "empty": true, "isToday": false },
+      { "day": "16", "state": "none", "empty": true, "isToday": false },
+      { "day": "17", "state": "none", "empty": true, "isToday": false },
+      { "day": "18", "state": "none", "empty": true, "isToday": false },
+      { "day": "19", "state": "none", "empty": true, "isToday": false },
+      { "day": "20", "state": "none", "empty": true, "isToday": false },
+      { "day": "21", "state": "none", "empty": true, "isToday": false },
+      { "day": "22", "state": "none", "empty": true, "isToday": false },
+      { "day": "23", "state": "none", "empty": true, "isToday": false },
+      { "day": "24", "state": "none", "empty": true, "isToday": false },
+      { "day": "25", "state": "none", "empty": true, "isToday": false },
+      { "day": "26", "state": "none", "empty": true, "isToday": false },
+      { "day": "27", "state": "none", "empty": true, "isToday": false },
+      { "day": "28", "state": "none", "empty": true, "isToday": false },
+      { "day": "29", "state": "none", "empty": true, "isToday": false },
+      { "day": "30", "state": "none", "empty": true, "isToday": false },
+      { "day": "31", "state": "none", "empty": true, "isToday": false }
+    ]
 }

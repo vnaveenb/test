@@ -1,0 +1,103 @@
+<mvc:View
+    controllerName="sap.ui.demo.timesheet.controller.Home"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+
+    <Page id="homePage" showHeader="false" showFooter="true" class="sapUiContentPadding">
+        <content>
+            <VBox class="mainContainer">
+
+                <!-- Welcome Section -->
+                <VBox class="sapUiLargeMarginBottom">
+                    <Title text="Good Morning, {timesheet>/employee/firstName}" class="sapMTitleStyleH2"/>
+                    <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                        <core:Icon src="sap-icon://calendar" class="sapUiTinyMarginEnd sapThemeFont-asColor" size="14px"/>
+                        <Text text="Monday, October 23, 2023" class="sapThemeFont-asColor"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Empty State Card -->
+                <VBox class="fioriCard fiori-shadow sapUiLargeMarginBottom" alignItems="Center" justifyContent="Center" height="25rem">
+                    <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMarginBottom relative">
+                        <!-- Simulated illustrated graphic -->
+                        <div xmlns="http://www.w3.org/1999/xhtml" class="w-64 h-64 bg-slate-50 dark:bg-slate-800/50 rounded-full flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-700 relative z-10" style="width: 16rem; height: 16rem; background-color: #f8fafc; border-radius: 9999px; display: flex; align-items: center; justify-content: center; border: 1px dashed #cbd5e1;">
+                            <core:Icon src="sap-icon://pending" size="5rem" color="#1978e5" />
+                        </div>
+                    </VBox>
+                    <Title text="No activities recorded" class="sapMTitleStyleH3 sapUiSmallMarginBottom" />
+                    <Text text="You haven't logged any time for today yet. Use the actions below to quickly get started or manually enter your hours." textAlign="Center" class="sapThemeFont-asColor sapUiLargeMarginBottom" width="28rem"/>
+                    <Button text="Add Daily Entry" class="btnPrimary" press="onNavToTimesheet" />
+                </VBox>
+
+                <!-- Quick Actions Section -->
+                <VBox>
+                    <Label text="QUICK ACTIONS" design="Bold" class="sapThemeFont-asColor sapUiSmallMarginBottom sapUiTinyMarginStart" />
+
+                    <l:Grid containerQuery="true" defaultSpan="XL4 L4 M4 S12" vSpacing="1.5rem" hSpacing="1.5rem">
+                        <!-- Card 1 -->
+                        <VBox class="fioriCard fiori-shadow" press="onActionPress">
+                            <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginBottom" style="width: 3rem; height: 3rem; background-color: rgba(25, 120, 229, 0.1); border-radius: 0.5rem; color: #1978e5;">
+                                <core:Icon src="sap-icon://add-activity" size="1.5rem" />
+                            </HBox>
+                            <Title text="Add Activity" class="sapMTitleStyleH5 sapUiTinyMarginBottom" />
+                            <Text text="Create a new manual time entry for a specific project." class="sapThemeFont-asColor sapMTextSmall" />
+                        </VBox>
+
+                        <!-- Card 2 -->
+                        <VBox class="fioriCard fiori-shadow" press="onActionPress">
+                            <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginBottom" style="width: 3rem; height: 3rem; background-color: rgba(234, 88, 12, 0.1); border-radius: 0.5rem; color: #ea580c;">
+                                <core:Icon src="sap-icon://copy" size="1.5rem" />
+                            </HBox>
+                            <Title text="Copy Last Week" class="sapMTitleStyleH5 sapUiTinyMarginBottom" />
+                            <Text text="Duplicate entries from the previous week to save time." class="sapThemeFont-asColor sapMTextSmall" />
+                        </VBox>
+
+                        <!-- Card 3 -->
+                        <VBox class="fioriCard fiori-shadow" press="onActionPress">
+                            <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginBottom" style="width: 3rem; height: 3rem; background-color: rgba(16, 185, 129, 0.1); border-radius: 0.5rem; color: #10b981;">
+                                <core:Icon src="sap-icon://customize" size="1.5rem" />
+                            </HBox>
+                            <Title text="Use Template" class="sapMTitleStyleH5 sapUiTinyMarginBottom" />
+                            <Text text="Load a pre-defined set of activities and allocations." class="sapThemeFont-asColor sapMTextSmall" />
+                        </VBox>
+                    </l:Grid>
+                </VBox>
+            </VBox>
+        </content>
+
+        <!-- Footer matched to layout -->
+        <footer>
+            <Toolbar class="customFooter">
+                <HBox alignItems="Center" width="100%" justifyContent="SpaceBetween" class="mainContainer" style="padding: 0 !important; margin: 0 auto !important;">
+                    <HBox alignItems="Center" class="sapUiLargeMarginEnd">
+                        <VBox class="sapUiMediumMarginEnd">
+                            <Label text="TODAY'S PROGRESS" design="Bold" class="sapThemeFont-asColor" style="font-size: 10px;"/>
+                            <HBox alignItems="Baseline">
+                                <Title text="{timesheet>/employee/todayRecorded}" class="sapMTitleStyleH4 sapUiTinyMarginEnd" />
+                                <Text text="/ {timesheet>/employee/todayStandard} h" class="sapThemeFont-asColor"/>
+                            </HBox>
+                        </VBox>
+                        <!-- Progress Bar Visual -->
+                        <HBox style="width: 16rem; height: 0.5rem; background-color: #f1f5f9; border-radius: 9999px; overflow: hidden;" class="sapUiHideOnPhone">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%; width: 0%; background-color: rgba(25, 120, 229, 0.2);"></div>
+                        </HBox>
+                    </HBox>
+
+                    <HBox alignItems="Center" justifyContent="End">
+                        <VBox class="sapUiLargeMarginEnd" alignItems="End">
+                            <Label text="WEEKLY TOTAL" design="Bold" class="sapThemeFont-asColor" style="font-size: 10px;"/>
+                            <HBox alignItems="Baseline">
+                                <Title text="{timesheet>/employee/recordedHours}" class="sapMTitleStyleH4 sapUiTinyMarginEnd" />
+                                <Text text="/ {timesheet>/employee/standardHours} h" class="sapThemeFont-asColor"/>
+                            </HBox>
+                        </VBox>
+                        <Button text="Weekly Review" class="btnSecondary sapUiSmallMarginEnd" press="onNavToTimesheet" />
+                        <Button text="Submit Period" class="btnPrimary" />
+                    </HBox>
+                </HBox>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

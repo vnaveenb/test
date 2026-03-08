@@ -5,17 +5,26 @@
     xmlns:f="sap.f"
     displayBlock="true">
     <App id="app">
-        <!-- ShellBar serves as the Global Header -->
-        <f:ShellBar
-            title="{i18n>appTitle}"
-            showCopilot="false"
-            showSearch="true"
-            showNotifications="true"
-            showProductSwitcher="false">
-            <f:profile>
-                <Avatar initials="JD" displaySize="XS"/>
-            </f:profile>
-        </f:ShellBar>
+        <!-- Custom Toolbar serves as the Global Header matching Tailwind design -->
+        <Toolbar class="customAppHeader">
+            <HBox alignItems="Center">
+                <Button icon="sap-icon://menu2" type="Transparent" class="sapUiTinyMarginEnd" />
+                <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM653Bxg1s4PQI0DRJFg7Li57aLbdCQ5DKpzj1p_Q1XBxdVUHdrjYf0KtAHo5t0uI27MgIRtA7V9KCkrlCG9MEq_3-cCXJ5gKGzq5S8UY0fURYDXPT9n85EObk-tKD1UzJ9Hc6Nt_0c4SXMXk9hxgFVhevytp4Wm0rBBpMG2xH319PdLQ35xiOLp1k62ow0S75kyqP42g6Af4k5jMbjj8Ps7uUClILemtaL_EC2zzButWIwazytaRbVDVVbSbNIqR7h8p0y9dSS1r0" height="1.5rem" class="sapUiTinyMarginEnd" />
+                <Title text="TIMESHEET" class="sapMTitleStyleH6" />
+            </HBox>
+
+            <HBox alignItems="Center" width="40%" class="sapUiHideOnPhone">
+                <SearchField placeholder="Search for projects, tasks or activities..." width="100%" />
+            </HBox>
+
+            <HBox alignItems="Center">
+                <Button icon="sap-icon://bell" type="Transparent" class="sapUiTinyMarginEnd" />
+                <Button icon="sap-icon://sys-help" type="Transparent" class="sapUiTinyMarginEnd" />
+                <!-- Separator Line using ToolbarSeparator -->
+                <ToolbarSeparator />
+                <Avatar initials="JD" displaySize="XS" class="sapUiTinyMarginStart" backgroundColor="Accent6" />
+            </HBox>
+        </Toolbar>
 
         <!-- Pages will be dynamically loaded here by the Router -->
         <pages>

@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f">
+
+    <Dialog
+        id="selectActivitiesDialog"
+        title="Select Activities"
+        contentWidth="600px"
+        contentHeight="85vh"
+        verticalScrolling="true"
+        class="customDialog">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="Select Activities" class="sapMTitleStyleH4 sapUiSmallMarginBegin" />
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" type="Transparent" press="onCloseDialog" class="sapUiTinyMarginEnd" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <VBox class="sapUiSmallMargin">
+            <!-- Search Bar Area -->
+            <SearchField placeholder="Search activities, projects, or WBS..." class="sapUiSmallMarginBottom" width="100%"/>
+
+            <!-- Recently Used Section -->
+            <VBox class="sapUiSmallMarginBottom">
+                <Title text="RECENTLY USED" class="sapThemeFont-asColor sapUiTinyMarginBottom" style="font-size: 10px; text-transform: uppercase;" />
+
+                <List items="{timesheet>/recentActivities}" mode="MultiSelect" noDataText="No recent activities">
+                    <CustomListItem class="fioriCard sapUiTinyMarginBottom" style="padding: 0.5rem !important;">
+                        <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+                            <VBox>
+                                <Title text="{timesheet>wbsName}" class="sapMTitleStyleH6" />
+                                <Text text="{timesheet>projectName}" class="sapThemeFont-asColor" style="font-size: 12px;" />
+                            </VBox>
+                            <Text text="{timesheet>timeAgo}" class="sapThemeFont-asColor" style="font-size: 12px;" />
+                        </HBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+
+            <!-- Hierarchy Section -->
+            <VBox class="sapUiSmallMarginTop">
+                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
+                    <Title text="ALL ACTIVITIES" class="sapThemeFont-asColor" style="font-size: 10px; text-transform: uppercase;" />
+                    <HBox>
+                        <Link text="Expand all" class="sapUiSmallMarginEnd" press="onExpandAll" />
+                        <Link text="Collapse all" press="onCollapseAll" />
+                    </HBox>
+                </HBox>
+
+                <!-- Hierarchy Tree -->
+                <Tree
+                    id="activitiesTree"
+                    items="{path: 'timesheet>/allActivities'}"
+                    mode="MultiSelect">
+                    <StandardTreeItem
+                        title="{timesheet>text}"
+                        icon="{timesheet>icon}" />
+                </Tree>
+            </VBox>
+        </VBox>
+
+        <buttons>
+            <Button text="Cancel" press="onCloseDialog" class="btnSecondary" />
+            <Button text="Add Items" press="onAddActivities" class="btnPrimary" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
