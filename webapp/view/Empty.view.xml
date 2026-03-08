@@ -1,0 +1,96 @@
+<mvc:View
+    controllerName="sap.ui.demo.timesheet.controller.Empty"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout">
+
+    <f:DynamicPage id="emptyPage" toggleHeaderOnTitleClick="false">
+
+        <!-- Title / Header -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:breadcrumbs>
+                    <Breadcrumbs>
+                        <Link text="My Timesheet" press="onNavBack"/>
+                        <Link text="Entry" />
+                    </Breadcrumbs>
+                </f:breadcrumbs>
+                <f:heading>
+                    <Title text="Timesheet" class="sapMTitleStyleH2"/>
+                </f:heading>
+                <f:actions>
+                    <Button text="Week of Oct 23" type="Transparent" />
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- Content with IllustratedMessage and Tiles -->
+        <f:content>
+            <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMarginTop sapUiLargeMarginBottom">
+                <IllustratedMessage
+                    illustrationType="sapIllus-NoData"
+                    title="No activities recorded for this week"
+                    description="Get started by adding a new project or copying from your previous week to quickly fill your timesheet.">
+                    <additionalContent>
+                        <HBox justifyContent="Center" width="100%" class="sapUiLargeMarginTop">
+                            <GenericTile
+                                header="Add Activity"
+                                subheader="New project entry"
+                                press="onAddActivity"
+                                class="sapUiSmallMarginEnd">
+                                <TileContent>
+                                    <NumericContent icon="sap-icon://add" valueColor="Neutral" withMargin="false" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="Copy Last Week"
+                                subheader="Redo previous week"
+                                press="onCopyLastWeek"
+                                class="sapUiSmallMarginEnd">
+                                <TileContent>
+                                    <NumericContent icon="sap-icon://refresh" valueColor="Neutral" withMargin="false" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="Browse Templates"
+                                subheader="Use saved template"
+                                press="onBrowseTemplates">
+                                <TileContent>
+                                    <NumericContent icon="sap-icon://document" valueColor="Neutral" withMargin="false" />
+                                </TileContent>
+                            </GenericTile>
+                        </HBox>
+                    </additionalContent>
+                </IllustratedMessage>
+            </VBox>
+        </f:content>
+
+        <!-- Footer -->
+        <f:footer>
+            <OverflowToolbar>
+                <VBox class="sapUiSmallMarginEnd">
+                    <Label text="TARGET" design="Bold"/>
+                    <Text text="40.00h" class="sapMTitleStyleH6"/>
+                </VBox>
+                <ToolbarSeparator />
+                <VBox class="sapUiSmallMarginStart sapUiSmallMarginEnd">
+                    <Label text="ACTUAL" design="Bold"/>
+                    <Text text="0.00h" class="sapThemeBrand-asColor sapMTitleStyleH6"/>
+                </VBox>
+                <ToolbarSeparator />
+                <VBox class="sapUiSmallMarginStart">
+                    <Label text="STATUS" design="Bold"/>
+                    <Text text="In Progress" class="sapMTitleStyleH6" />
+                </VBox>
+
+                <ToolbarSpacer />
+                <Button text="Release Week" enabled="false" />
+            </OverflowToolbar>
+        </f:footer>
+
+    </f:DynamicPage>
+
+</mvc:View>

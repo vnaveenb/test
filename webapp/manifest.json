@@ -1,0 +1,100 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "sap.ui.demo.timesheet",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "timesheetMock": {
+        "uri": "mockdata/timesheet.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "sap.ui.demo.timesheet.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.ui.demo.timesheet.i18n.i18n",
+          "supportedLocales": [
+            ""
+          ],
+          "fallbackLocale": ""
+        }
+      },
+      "timesheet": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "timesheetMock"
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "sap.ui.demo.timesheet.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "timesheet",
+          "target": "timesheet"
+        },
+        {
+          "pattern": "empty",
+          "name": "empty",
+          "target": "empty"
+        }
+      ],
+      "targets": {
+        "timesheet": {
+          "viewId": "timesheet",
+          "viewName": "Timesheet"
+        },
+        "empty": {
+          "viewId": "empty",
+          "viewName": "Empty"
+        }
+      }
+    }
+  }
+}

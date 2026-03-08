@@ -1,0 +1,25 @@
+<mvc:View
+    controllerName="sap.ui.demo.timesheet.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    displayBlock="true">
+    <App id="app">
+        <!-- ShellBar serves as the Global Header -->
+        <f:ShellBar
+            title="{i18n>appTitle}"
+            showCopilot="false"
+            showSearch="true"
+            showNotifications="true"
+            showProductSwitcher="false">
+            <f:profile>
+                <Avatar initials="JD" displaySize="XS"/>
+            </f:profile>
+        </f:ShellBar>
+
+        <!-- Pages will be dynamically loaded here by the Router -->
+        <pages>
+            <!-- Managed by Routing in manifest.json -->
+        </pages>
+    </App>
+</mvc:View>

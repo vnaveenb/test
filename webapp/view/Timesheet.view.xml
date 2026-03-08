@@ -1,0 +1,193 @@
+<mvc:View
+    controllerName="sap.ui.demo.timesheet.controller.Timesheet"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout">
+
+    <f:DynamicPage id="timesheetPage" toggleHeaderOnTitleClick="false">
+
+        <!-- Header -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{timesheet>/employee/weekTitle}" class="sapUiTinyMarginTop"/>
+                </f:heading>
+                <f:content>
+                    <ObjectStatus text="Status: {timesheet>/employee/status}" state="Warning" class="sapUiTinyMarginTop" />
+                </f:content>
+                <f:actions>
+                    <Button icon="sap-icon://navigation-left-arrow" type="Transparent" />
+                    <Button text="{timesheet>/employee/weekNumber}" icon="sap-icon://calendar" type="Default" />
+                    <Button icon="sap-icon://navigation-right-arrow" type="Transparent" />
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <l:HorizontalLayout>
+                    <l:VerticalLayout class="sapUiLargeMarginEnd">
+                        <Label text="EMPLOYEE"/>
+                        <Text text="{timesheet>/employee/name} ({timesheet>/employee/id})" class="sapMTitleStyleH4"/>
+                    </l:VerticalLayout>
+                    <l:VerticalLayout class="sapUiLargeMarginEnd">
+                        <Label text="STANDARD HOURS"/>
+                        <Text text="{timesheet>/employee/standardHours} h" class="sapMTitleStyleH4"/>
+                    </l:VerticalLayout>
+                    <l:VerticalLayout>
+                        <Label text="RECORDED HOURS"/>
+                        <Text text="{timesheet>/employee/recordedHours} h" class="sapMTitleStyleH4 sapThemeBrand-asColor"/>
+                    </l:VerticalLayout>
+                </l:HorizontalLayout>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- Content -->
+        <f:content>
+            <VBox>
+                <Table
+                    id="timesheetTable"
+                    items="{path: 'timesheet>/timeEntries'}"
+                    class="sapUiResponsiveMargin">
+
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Time Entries" level="H2"/>
+                            <ToolbarSpacer />
+                            <Button text="Add Row" icon="sap-icon://add" press="onAddRow"/>
+                            <Button text="Copy Week" icon="sap-icon://copy" press="onCopyWeek"/>
+                            <Button text="Go to Empty State" press="onGoToEmpty" type="Emphasized"/>
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column width="300px"><Text text="Activity / WBS Element" /></Column>
+                        <Column hAlign="Center"><Text text="Mon" /></Column>
+                        <Column hAlign="Center"><Text text="Tue" /></Column>
+                        <Column hAlign="Center"><Text text="Wed" /></Column>
+                        <Column hAlign="Center"><Text text="Thu" /></Column>
+                        <Column hAlign="Center"><Text text="Fri" /></Column>
+                        <Column hAlign="Center"><Text text="Sat" /></Column>
+                        <Column hAlign="Center"><Text text="Sun" /></Column>
+                        <Column hAlign="Center"><Text text="Total" /></Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <VBox>
+                                    <Text text="{timesheet>activity}" class="sapMTitleStyleH5"/>
+                                    <Text text="{timesheet>wbs}" class="sapUiSmallMarginTop sapThemeFont-asColor" />
+                                </VBox>
+                                <Input value="{
+                                        path: 'timesheet>mon',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>tue',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>wed',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>thu',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>fri',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>sat',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Input value="{
+                                        path: 'timesheet>sun',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" textAlign="Center" />
+                                <Text text="{
+                                        path: 'timesheet>total',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                    }" class="sapMTitleStyleH4" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <!-- Daily Totals row appended as a separate grid or footer to the table visually -->
+                <HBox class="sapUiResponsiveMargin sapUiSmallMarginBottom" justifyContent="End" alignItems="Center">
+                     <Text text="Daily Total" class="sapMTitleStyleH4 sapThemeBrand-asColor sapUiMediumMarginEnd"/>
+                     <!-- Values roughly aligning with columns -->
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/mon',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/tue',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/wed',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/thu',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/fri',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/sat',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/sun',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH5 sapUiSmallMarginEnd"/>
+                     <Text text="{
+                            path: 'timesheet>/dailyTotals/total',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }" width="5rem" textAlign="Center" class="sapMTitleStyleH4 sapThemeBrand-asColor sapUiSmallMarginEnd"/>
+                </HBox>
+            </VBox>
+        </f:content>
+
+        <!-- Footer -->
+        <f:footer>
+            <OverflowToolbar>
+                <Label text="Weekly Progress ({timesheet>/employee/recordedHours} / {timesheet>/employee/standardHours}h)" />
+                <ProgressIndicator
+                    percentValue="80"
+                    displayValue="80%"
+                    state="None"
+                    width="200px" />
+                <ToolbarSpacer />
+                <Button text="Save Draft" type="Default" />
+                <Button text="Release Week" type="Emphasized" />
+                <Button icon="sap-icon://overflow" type="Transparent" />
+            </OverflowToolbar>
+        </f:footer>
+
+    </f:DynamicPage>
+</mvc:View>

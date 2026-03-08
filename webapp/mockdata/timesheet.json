@@ -1,0 +1,59 @@
+{
+    "employee": {
+      "name": "Alex Rivers",
+      "id": "E00432",
+      "status": "Draft",
+      "weekTitle": "Oct 16 – Oct 22, 2023",
+      "weekNumber": "Week 42, 2023",
+      "standardHours": 40.00,
+      "recordedHours": 32.00
+    },
+    "timeEntries": [
+      {
+        "activity": "Project Alpha - Development",
+        "wbs": "WBS: 12.040.11 / Software Eng",
+        "mon": 8.00,
+        "tue": 8.00,
+        "wed": 8.00,
+        "thu": 4.00,
+        "fri": 0.00,
+        "sat": 0.00,
+        "sun": 0.00,
+        "total": 28.00
+      },
+      {
+        "activity": "Internal - Team Meeting",
+        "wbs": "WBS: ADMIN.001 / Admin",
+        "mon": 0.00,
+        "tue": 0.00,
+        "wed": 0.00,
+        "thu": 4.00,
+        "fri": 0.00,
+        "sat": 0.00,
+        "sun": 0.00,
+        "total": 4.00
+      },
+      {
+        "activity": "Training - SAP Fiori",
+        "wbs": "WBS: EDU.999 / Education",
+        "mon": 0.00,
+        "tue": 0.00,
+        "wed": 0.00,
+        "thu": 0.00,
+        "fri": 0.00,
+        "sat": 0.00,
+        "sun": 0.00,
+        "total": 0.00
+      }
+    ],
+    "dailyTotals": {
+      "mon": 8.00,
+      "tue": 8.00,
+      "wed": 8.00,
+      "thu": 8.00,
+      "fri": 0.00,
+      "sat": 0.00,
+      "sun": 0.00,
+      "total": 32.00
+    }
+}
